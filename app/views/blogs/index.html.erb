@@ -1,20 +1,19 @@
   <p id="notice"><%= notice %></p>
 
   <h1>Blogs</h1>
-  <div class="ui divider"></div>
 
-  <div class="ui container">
+  <div class="ui basic segment items">
     <% @blogs.each do |blog| %>
-      <div>
-        <h3><%= blog.title %></h3>
-        <p><%= blog.content %></p>
-        <i>
-          Created at: <%= @tz.utc_to_local(blog.created_at).strftime('%Y-%m-%d %H:%M:%S') %><br />
-          Updated at: <%= @tz.utc_to_local(blog.updated_at).strftime('%Y-%m-%d %H:%M:%S') %>
-        </i>
-        <div>
-          <%= link_to 'Show', blog %>
-          <%= link_to 'Edit', edit_blog_path(blog) %>
+      <div class="item">
+        <div class="content">
+          <div class="header"><%= blog.title %></div>
+          <div class="description"><%= blog.content %></div>
+          <div class="extra">
+            Created at: <%= @tz.utc_to_local(blog.created_at).strftime('%Y-%m-%d %H:%M:%S') %>.
+            Updated at: <%= @tz.utc_to_local(blog.updated_at).strftime('%Y-%m-%d %H:%M:%S') %>.<br />
+            <%= link_to 'Show', blog %>
+            <%= link_to 'Edit', edit_blog_path(blog) %>
+          </div>
         </div>
       </div>
       <div class="ui divider"></div>
