@@ -1,0 +1,24 @@
+  <p id="notice"><%= notice %></p>
+
+  <h1>Blogs</h1>
+
+  <div class="ui container">
+    <% @blogs.each do |blog| %>
+      <div>
+        <h3><%= blog.title %></h3>
+        <p><%= blog.content %></p>
+        <i>
+          Created at: <%= @tz.utc_to_local(blog.created_at).strftime('%Y-%m-%d %H:%M:%S') %><br />
+          Updated at: <%= @tz.utc_to_local(blog.updated_at).strftime('%Y-%m-%d %H:%M:%S') %>
+        </i>
+        <div>
+          <%= link_to 'Show', blog %>
+          <%= link_to 'Edit', edit_blog_path(blog) %>
+        </div>
+      </div>
+      <div class="ui divider"></div>
+    <% end %>
+  </div>
+
+
+  <%= link_to 'New Blog', new_blog_path %>
